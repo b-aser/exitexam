@@ -95,32 +95,407 @@
     <script>
         // Quiz questions
         const quizQuestions = [
-            {
-                question: "What is the capital of France?",
-                options: ["London", "Berlin", "Paris", "Madrid"],
-                answer: 2
-            },
-            {
-                question: "Which planet is known as the Red Planet?",
-                options: ["Venus", "Mars", "Jupiter", "Saturn"],
-                answer: 1
-            },
-            {
-                question: "What is the largest mammal?",
-                options: ["Elephant", "Blue Whale", "Giraffe", "Polar Bear"],
-                answer: 1
-            },
-            {
-                question: "Which language runs in a web browser?",
-                options: ["Java", "C", "Python", "JavaScript"],
-                answer: 3
-            },
-            {
-                question: "What year was JavaScript launched?",
-                options: ["1996", "1995", "1994", "None of the above"],
-                answer: 1
-            }
-        ];
+    {
+      "question": "What is user management primarily concerned with?",
+      "options": [
+        "A: Managing software licenses.",
+        "B: Managing user access and control user accounts.",
+        "C: Monitoring network performance.",
+        "D: Providing technical support."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which of the following is a benefit of user management?",
+      "options": [
+        "A: Increased software costs.",
+        "B: Improved security of digital assets.",
+        "C: Reduced need for support services.",
+        "D: Increased system downtime."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the role of the root user in a Linux system?",
+      "options": [
+        "A: Limited access to system resources.",
+        "B: Full administrative privileges.",
+        "C: Network administration only.",
+        "D: Regular user with no special privileges."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which command is used to change the current directory in Linux?",
+      "options": [
+        "A: ls",
+        "B: cd",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What does the `ls -l` command do in Linux?",
+      "options": [
+        "A: Lists files and directories in long format.",
+        "B: Deletes a file.",
+        "C: Changes the current directory.",
+        "D: Creates a new directory."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which access control model is determined by the owner of the object?",
+      "options": [
+        "A: Discretionary Access Control (DAC).",
+        "B: Mandatory Access Control (MAC).",
+        "C: Role-Based Access Control (RBAC).",
+        "D: None of the above."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "What is the purpose of the `/etc/passwd` file in Linux?",
+      "options": [
+        "A: Stores user passwords.",
+        "B: Stores user account information.",
+        "C: Stores system configuration settings.",
+        "D: Stores network settings."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which command is used to create a new directory in Linux?",
+      "options": [
+        "A: ls",
+        "B: cd",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "D"
+    },
+    {
+      "question": "What is the primary purpose of access control?",
+      "options": [
+        "A: To ensure all users have equal access to resources.",
+        "B: To manage user access and control user accounts for security.",
+        "C: To provide a platform for running applications.",
+        "D: To monitor network performance."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which type of user account in Linux is used for system administration?",
+      "options": [
+        "A: Normal User.",
+        "B: Network User.",
+        "C: Super User or Root User.",
+        "D: System User."
+      ],
+      "answer": "C"
+    },
+    {
+      "question": "What is the command to remove a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: cd",
+        "C: pwd",
+        "D: rm"
+      ],
+      "answer": "D"
+    },
+    {
+      "question": "Which command is used to display the contents of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: cat",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the purpose of the `/etc/group` file in Linux?",
+      "options": [
+        "A: Stores user passwords.",
+        "B: Stores user account information.",
+        "C: Stores group information.",
+        "D: Stores network settings."
+      ],
+      "answer": "C"
+    },
+    {
+      "question": "Which command is used to change the permissions of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: chmod",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `chmod` command in Linux?",
+      "options": [
+        "A: To change the ownership of a file.",
+        "B: To change the permissions of a file.",
+        "C: To change the group of a file.",
+        "D: To change the name of a file."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which command is used to change the ownership of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: chown",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `chown` command in Linux?",
+      "options": [
+        "A: To change the ownership of a file.",
+        "B: To change the permissions of a file.",
+        "C: To change the group of a file.",
+        "D: To change the name of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to change the group of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: chgrp",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `chgrp` command in Linux?",
+      "options": [
+        "A: To change the ownership of a file.",
+        "B: To change the permissions of a file.",
+        "C: To change the group of a file.",
+        "D: To change the name of a file."
+      ],
+      "answer": "C"
+    },
+    {
+      "question": "Which command is used to display the current working directory in Linux?",
+      "options": [
+        "A: ls",
+        "B: cd",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "C"
+    },
+    {
+      "question": "What is the primary purpose of the `pwd` command in Linux?",
+      "options": [
+        "A: To change the current directory.",
+        "B: To display the current working directory.",
+        "C: To list files and directories.",
+        "D: To create a new directory."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which command is used to move or rename a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: mv",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `mv` command in Linux?",
+      "options": [
+        "A: To move or rename a file.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to copy a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: cp",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `cp` command in Linux?",
+      "options": [
+        "A: To copy a file.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to display the first few lines of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: head",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `head` command in Linux?",
+      "options": [
+        "A: To display the first few lines of a file.",
+        "B: To display the last few lines of a file.",
+        "C: To display the contents of a file.",
+        "D: To create a new file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to display the last few lines of a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: tail",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `tail` command in Linux?",
+      "options": [
+        "A: To display the first few lines of a file.",
+        "B: To display the last few lines of a file.",
+        "C: To display the contents of a file.",
+        "D: To create a new file."
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "Which command is used to display the contents of a file page by page in Linux?",
+      "options": [
+        "A: ls",
+        "B: less",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `less` command in Linux?",
+      "options": [
+        "A: To display the contents of a file page by page.",
+        "B: To display the first few lines of a file.",
+        "C: To display the last few lines of a file.",
+        "D: To create a new file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to list running processes in Linux?",
+      "options": [
+        "A: ls",
+        "B: ps",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `ps` command in Linux?",
+      "options": [
+        "A: To list running processes.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to terminate a process in Linux?",
+      "options": [
+        "A: ls",
+        "B: kill",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `kill` command in Linux?",
+      "options": [
+        "A: To terminate a process.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to display the current date and time in Linux?",
+      "options": [
+        "A: ls",
+        "B: date",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `date` command in Linux?",
+      "options": [
+        "A: To display the current date and time.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to display the calendar in Linux?",
+      "options": [
+        "A: ls",
+        "B: cal",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    },
+    {
+      "question": "What is the primary purpose of the `cal` command in Linux?",
+      "options": [
+        "A: To display the calendar.",
+        "B: To change the permissions of a file.",
+        "C: To change the ownership of a file.",
+        "D: To display the contents of a file."
+      ],
+      "answer": "A"
+    },
+    {
+      "question": "Which command is used to count the number of lines, words, and bytes in a file in Linux?",
+      "options": [
+        "A: ls",
+        "B: wc",
+        "C: pwd",
+        "D: mkdir"
+      ],
+      "answer": "B"
+    }
+  ];
 
         // Quiz state
         let currentQuestion = 0;
