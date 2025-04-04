@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Time | QuizMaster</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .quiz-header {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .question-card {
+            margin-bottom: 2rem;
+            border-left: 4px solid #6e8efb;
+        }
+
+        .option-item {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .option-item.selected {
+            background-color: #e7f1ff;
+            border-color: #6e8efb;
+        }
+
+        .option-item.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+
+        .option-item.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .progress-container {
+            height: 8px;
+            background-color: #e9ecef;
+            margin-bottom: 2rem;
+        }
+
+        .progress-bar {
+            background-color: #6e8efb;
+        }
+
+        .feedback {
+            display: none;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .result-settings-card {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-brain me-2"></i>QuizMaster
+            </a>
+            <div class="d-flex">
+                <span class="navbar-text me-3 d-none d-sm-block">
+                    <i class="fas fa-user me-1"></i> Welcome, User!
+                </span>
+                <button class="btn btn-outline-light">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Quiz Header -->
+    <section class="quiz-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h3 mb-1" id="quiz-title">Loading Quiz...</h1>
+                    <p class="text-muted mb-0" id="quiz-description"></p>
+                </div>
+                <div class="text-end">
+                    <div class="badge bg-primary mb-1" id="total-questions">0 questions</div>
+                    <div class="text-muted small">Time: Unlimited</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Quiz Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Quiz Questions Column -->
+            <div class="col-lg-8">
+                <!-- Result Display Settings Card -->
+                <div class="card result-settings-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-cog me-2"></i>Quiz Settings</h5>
+                        <p class="card-text">How would you like to see your results?</p>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="resultDisplay" id="showAfterEach"
+                                checked>
+                            <label class="form-check-label" for="showAfterEach">
+                                Show me if I'm right/wrong immediately after each question
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="resultDisplay" id="showAtEnd">
+                            <label class="form-check-label" for="showAtEnd">
+                                Show me all results only after I finish the quiz
+                            </label>
+                        </div>
+
+                        <button id="confirmSettings" class="btn btn-primary mt-3">
+                            <i class="fas fa-check me-1"></i> Confirm Settings
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Progress -->
+                <div class="progress-container">
+                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+
+                <!-- Current Question -->
+                <div class="card question-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="badge bg-secondary" id="question-counter">Question 0 of 0</span>
+                            <span class="text-muted">Points: 1</span>
+                        </div>
+
+                        <h4 class="card-title mb-4" id="question-text">Loading question...</h4>
+
+                        <div class="options-container" id="options-container">
+                            <!-- Options will be inserted here by JavaScript -->
+                        </div>
+
+                        <div class="feedback correct" id="correct-feedback" style="display: none;">
+                            <i class="fas fa-check-circle me-2"></i> <span id="correct-feedback-text"></span>
+                        </div>
+                        <div class="feedback incorrect" id="incorrect-feedback" style="display: none;">
+                            <i class="fas fa-times-circle me-2"></i> <span id="incorrect-feedback-text"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <button class="btn btn-outline-secondary" id="prev-question" disabled>
+                                <i class="fas fa-arrow-left me-1"></i> Previous
+                            </button>
+                            <button class="btn btn-primary" id="next-question" disabled>
+                                Next <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Quiz Sidebar -->
+            <div class="col-lg-4">
+                <div class="card sticky-top" style="top: 80px;">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">Quiz Navigation</h5>
+
+                        <div class="question-grid mb-4" id="question-navigation">
+                            <!-- Question navigation buttons will be inserted here -->
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success" id="finish-quiz" disabled>
+                                <i class="fas fa-flag-checkered me-1"></i> Finish Quiz
+                            </button>
+                            <button class="btn btn-outline-danger" id="exit-quiz">
+                                <i class="fas fa-times me-1"></i> Exit Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Quiz JavaScript -->
+    <script>
+        // Quiz state
+        let quizData = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let showImmediateFeedback = true;
+
+        // DOM elements
+        const quizTitleEl = document.getElementById('quiz-title');
+        const quizDescriptionEl = document.getElementById('quiz-description');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const questionCounterEl = document.getElementById('question-counter');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const correctFeedbackEl = document.getElementById('correct-feedback');
+        const correctFeedbackTextEl = document.getElementById('correct-feedback-text');
+        const incorrectFeedbackEl = document.getElementById('incorrect-feedback');
+        const incorrectFeedbackTextEl = document.getElementById('incorrect-feedback-text');
+        const prevQuestionBtn = document.getElementById('prev-question');
+        const nextQuestionBtn = document.getElementById('next-question');
+        const finishQuizBtn = document.getElementById('finish-quiz');
+        const exitQuizBtn = document.getElementById('exit-quiz');
+        const questionNavigationEl = document.getElementById('question-navigation');
+        const progressBar = document.querySelector('.progress-bar');
+        const confirmSettingsBtn = document.getElementById('confirmSettings');
+        const showAfterEachRadio = document.getElementById('showAfterEach');
+
+        // Load quiz data from JSON file
+        async function loadQuizData() {
+            try {
+                const response = await fetch('question.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load quiz data');
+                }
+                quizData = await response.json();
+                initializeQuiz();
+            } catch (error) {
+                console.error('Error loading quiz:', error);
+                quizTitleEl.textContent = 'Error Loading Quiz';
+                questionTextEl.textContent = 'Failed to load quiz questions. Please try again later.';
+            }
+        }
+
+        // Initialize quiz after data is loaded
+        function initializeQuiz() {
+            // Set quiz info
+            quizTitleEl.textContent = quizData.quizTitle;
+            quizDescriptionEl.textContent = quizData.quizDescription;
+            totalQuestionsEl.textContent = `${quizData.totalQuestions} questions`;
+
+            // Initialize user answers array
+            userAnswers = new Array(quizData.questions.length).fill(null);
+
+            // Create question navigation buttons
+            questionNavigationEl.innerHTML = '';
+            quizData.questions.forEach((question, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn btn-sm btn-outline-secondary mb-2';
+                btn.textContent = index + 1;
+                btn.addEventListener('click', () => navigateToQuestion(index));
+                questionNavigationEl.appendChild(btn);
+            });
+
+            // Load first question
+            loadQuestion(currentQuestionIndex);
+        }
+
+        // Load a specific question
+        function loadQuestion(index) {
+            const question = quizData.questions[index];
+
+            // Update question counter
+            questionCounterEl.textContent = `Question ${index + 1} of ${quizData.totalQuestions}`;
+
+            // Update question text
+            questionTextEl.textContent = question.question;
+
+            // Update options
+            optionsContainerEl.innerHTML = '';
+            question.options.forEach((option, optionIndex) => {
+                const optionItem = document.createElement('div');
+                optionItem.className = 'option-item';
+
+                const optionId = `question-${index}-option-${optionIndex}`;
+
+                optionItem.innerHTML = `
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="question-${index}" id="${optionId}">
+                <label class="form-check-label" for="${optionId}">
+                    ${option}
+                </label>
+            </div>
+        `;
+
+                // Add click handler
+                optionItem.addEventListener('click', () => selectOption(index, option));
+                optionsContainerEl.appendChild(optionItem);
+            });
+
+            // Set explanation text
+            correctFeedbackTextEl.textContent = question.explanation;
+            incorrectFeedbackTextEl.textContent = question.explanation;
+
+            // Hide feedback initially
+            correctFeedbackEl.style.display = 'none';
+            incorrectFeedbackEl.style.display = 'none';
+
+            // Update navigation buttons
+            prevQuestionBtn.disabled = index === 0;
+            nextQuestionBtn.disabled = userAnswers[index] === null;
+            nextQuestionBtn.textContent = index === quizData.questions.length - 1 ? 'Finish Quiz' : 'Next';
+
+            // Update progress bar
+            updateProgress();
+
+            // Update navigation buttons active state
+            updateNavigationButtons();
+        }
+
+
+        // Handle option selection
+        function selectOption(questionIndex, selectedOption) {
+            const question = quizData.questions[questionIndex];
+            const optionItems = optionsContainerEl.querySelectorAll('.option-item');
+
+            // Remove selected class from all options
+            optionItems.forEach(item => item.classList.remove('selected', 'correct', 'incorrect'));
+
+            // Mark selected option
+            const selectedItem = Array.from(optionItems).find(item =>
+                item.textContent.trim() === selectedOption.trim());
+            if (selectedItem) {
+                selectedItem.classList.add('selected');
+                selectedItem.querySelector('input').checked = true;
+            }
+
+            // Store user answer
+            userAnswers[questionIndex] = selectedOption;
+
+            // Enable next button
+            nextQuestionBtn.disabled = false;
+
+            // If immediate feedback is enabled, show result
+            if (showImmediateFeedback) {
+                const isCorrect = selectedOption === question.answer;
+
+                // Show feedback
+                correctFeedbackEl.style.display = isCorrect ? 'block' : 'none';
+                incorrectFeedbackEl.style.display = isCorrect ? 'none' : 'block';
+
+                // Highlight correct answer and user's selection
+                optionItems.forEach(item => {
+                    if (item.textContent.trim() === question.answer.trim()) {
+                        item.classList.add('correct');
+                    } else if (item.textContent.trim() === selectedOption.trim() && !isCorrect) {
+                        item.classList.add('incorrect');
+                    }
+                });
+            }
+
+            // Update navigation button for this question
+            const navButton = questionNavigationEl.children[questionIndex];
+            navButton.className = `btn btn-sm ${userAnswers[questionIndex] !== null ?
+                (userAnswers[questionIndex] === question.answer ? 'btn-success' : 'btn-danger') :
+                'btn-outline-secondary'} mb-2`;
+        }
+
+        // Navigate to a specific question
+        function navigateToQuestion(index) {
+            currentQuestionIndex = index;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const answeredCount = userAnswers.filter(answer => answer !== null).length;
+            const progress = (answeredCount / quizData.questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressBar.setAttribute('aria-valuenow', progress);
+
+            // Enable finish button if all questions answered
+            finishQuizBtn.disabled = answeredCount < quizData.questions.length;
+        }
+
+        // Update navigation buttons style
+        function updateNavigationButtons() {
+            Array.from(questionNavigationEl.children).forEach((btn, index) => {
+                if (index === currentQuestionIndex) {
+                    btn.classList.remove('btn-outline-secondary', 'btn-success', 'btn-danger');
+                    btn.classList.add('btn-primary');
+                } else {
+                    btn.classList.remove('btn-primary');
+
+                    if (userAnswers[index] !== null) {
+                        const question = quizData.questions[index];
+                        const isCorrect = userAnswers[index] === question.answer;
+                        btn.classList.add(isCorrect ? 'btn-success' : 'btn-danger');
+                    } else {
+                        btn.classList.add('btn-outline-secondary');
+                    }
+                }
+            });
+        }
+
+        // Event listeners
+        prevQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                navigateToQuestion(currentQuestionIndex - 1);
+            }
+        });
+
+        nextQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                navigateToQuestion(currentQuestionIndex + 1);
+            } else {
+                finishQuiz();
+            }
+        });
+
+        finishQuizBtn.addEventListener('click', finishQuiz);
+
+        exitQuizBtn.addEventListener('click', () => {
+            if (confirm('Are you sure you want to exit the quiz? Your progress will be lost.')) {
+                window.location.href = 'index.html'; // Change to your home page
+            }
+        });
+
+        confirmSettingsBtn.addEventListener('click', () => {
+            showImmediateFeedback = showAfterEachRadio.checked;
+            document.querySelector('.result-settings-card').classList.add('d-none');
+        });
+
+        // Finish quiz function
+        function finishQuiz() {
+            // Calculate score
+            const score = quizData.questions.reduce((total, question, index) => {
+                if (userAnswers[index] !== null && question.options[userAnswers[index]].correct) {
+                    return total + 1;
+                }
+                return total;
+            }, 0);
+
+            // Show results (in a real app, you might show a results page)
+            alert(`Quiz completed! You scored ${score} out of ${quizData.questions.length}`);
+
+            // Here you would typically redirect to a results page or show detailed results
+            // window.location.href = `results.html?score=${score}&total=${quizData.questions.length}`;
+        }
+
+        
+        // Start the quiz
+        loadQuizData();
+    </script>
+</body>
+
+</html>
