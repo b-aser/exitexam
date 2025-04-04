@@ -1,0 +1,43 @@
+{
+    "quizTitle": "World Capitals Quiz",
+    "quizDescription": "Test your knowledge of world geography",
+    "totalQuestions": 3,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "options": [
+          {"text": "Berlin", "correct": false},
+          {"text": "Madrid", "correct": false},
+          {"text": "Paris", "correct": true},
+          {"text": "Rome", "correct": false}
+        ],
+        "feedbackCorrect": "Correct! Paris is the capital of France.",
+        "feedbackIncorrect": "Incorrect. The correct answer is Paris."
+      },
+      {
+        "id": 2,
+        "question": "Which city is the capital of Japan?",
+        "options": [
+          {"text": "Beijing", "correct": false},
+          {"text": "Seoul", "correct": false},
+          {"text": "Tokyo", "correct": true},
+          {"text": "Bangkok", "correct": false}
+        ],
+        "feedbackCorrect": "Right! Tokyo is Japan's bustling capital.",
+        "feedbackIncorrect": "No, Tokyo is the capital of Japan."
+      },
+      {
+        "id": 3,
+        "question": "The capital of Australia is:",
+        "options": [
+          {"text": "Sydney", "correct": false},
+          {"text": "Melbourne", "correct": false},
+          {"text": "Canberra", "correct": true},
+          {"text": "Perth", "correct": false}
+        ],
+        "feedbackCorrect": "Yes! Canberra is Australia's capital.",
+        "feedbackIncorrect": "Actually, Canberra is the capital of Australia."
+      }
+    ]
+  }
