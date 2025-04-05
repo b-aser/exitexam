@@ -50,19 +50,24 @@
                         <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="#catagory">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Leaderboard</a>
+                        <a class="nav-link" href="#Leaderboard">Leaderboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#Recent">Recent Exams</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#About">About</a>
+                    </li>
+                    
                 </ul>
-                <div class="d-flex">
+                <!-- because this project is not database based -->
+                <!-- <div class="d-flex">
                     <a href="#" class="btn btn-outline-light me-2">Login</a>
                     <a href="#" class="btn btn-primary">Sign Up</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
@@ -86,39 +91,40 @@
     </section>
 
     <!-- Popular Categories -->
+     
     <section class="container mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="fw-bold">Popular Categories</h2>
-            <a href="#" class="btn btn-outline-primary">View All</a>
+            <!-- <a href="#" class="btn btn-outline-primary">View All</a> -->
         </div>
         <div class="row g-4">
             <div class="col-md-4 col-sm-6">
                 <div class="card category-card h-100">
-                    <img src="https://source.unsplash.com/random/300x200/?science" class="card-img-top" alt="Science">
+                    <!-- <img src="https://source.unsplash.com/random/300x200/?science" class="card-img-top" alt="Science"> -->
                     <div class="card-body">
-                        <h5 class="card-title">Science</h5>
+                        <h5 class="card-title">Computer Programming</h5>
                         <p class="card-text">Explore the wonders of physics, chemistry, and biology.</p>
-                        <a href="quiz.html" class="btn btn-primary">Take Quiz</a>
+                        <a href="computer-programming/quiz.html" class="btn btn-primary">Take Quiz</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="card category-card h-100">
-                    <img src="https://source.unsplash.com/random/300x200/?history" class="card-img-top" alt="History">
+                    <!-- <img src="https://source.unsplash.com/random/300x200/?history" class="card-img-top" alt="History"> -->
                     <div class="card-body">
-                        <h5 class="card-title">History</h5>
+                        <h5 class="card-title">DSA</h5>
                         <p class="card-text">Test your knowledge of world events and historical figures.</p>
-                        <a href="#" class="btn btn-primary">Take Quiz</a>
+                        <a href="dsa/quiz.html" class="btn btn-primary">Take Quiz</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="card category-card h-100">
-                    <img src="https://source.unsplash.com/random/300x200/?movies" class="card-img-top" alt="Movies">
+                    <!-- <img src="https://source.unsplash.com/random/300x200/?movies" class="card-img-top" alt="Movies"> -->
                     <div class="card-body">
-                        <h5 class="card-title">Movies & TV</h5>
+                        <h5 class="card-title">JKU Exit Model #1</h5>
                         <p class="card-text">How well do you know your favorite films and shows?</p>
-                        <a href="#" class="btn btn-primary">Take Quiz</a>
+                        <a href="jku-model-1/quiz.html" class="btn btn-primary">Take Quiz</a>
                     </div>
                 </div>
             </div>
@@ -126,7 +132,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="bg-light py-5 mb-5">
+    <section id="Leaderboard" class="bg-light py-5 mb-5">
         <div class="container">
             <h2 class="text-center fw-bold mb-5">Why Choose QuizMaster?</h2>
             <div class="row g-4">
@@ -156,8 +162,8 @@
     </section>
 
     <!-- Recent Quizzes -->
-    <section class="container mb-5">
-        <h2 class="fw-bold mb-4">Recent Quizzes</h2>
+    <section id="Recent" class="container mb-5">
+        <h2 class="fw-bold mb-4">Recent Exams</h2>
         <div class="row g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="card h-100">
@@ -226,18 +232,18 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="bg-primary text-white py-5 mb-5">
+    <!-- <section class="bg-primary text-white py-5 mb-5">
         <div class="container text-center">
             <h2 class="fw-bold mb-4">Ready to Challenge Yourself?</h2>
             <p class="lead mb-4">Join thousands of users testing their knowledge daily.</p>
             <a href="#" class="btn btn-light btn-lg px-4 me-2">Sign Up Free</a>
             <a href="#" class="btn btn-outline-light btn-lg px-4">Take Sample Quiz</a>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div id="About" class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5><i class="fas fa-brain me-2"></i>QuizMaster</h5>
@@ -267,20 +273,17 @@
                         <li><a href="#" class="text-decoration-none">Movies</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <h5>Newsletter</h5>
-                    <p>Subscribe to get updates on new quizzes and features.</p>
-                    <form class="mb-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your email">
-                            <button class="btn btn-primary" type="submit">Subscribe</button>
-                        </div>
-                    </form>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> contact@quizmaster.com</li>
+                        <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                    </ul>
                 </div>
             </div>
             <hr>
             <div class="text-center">
-                <p class="mb-0">&copy; 2023 QuizMaster. All rights reserved.</p>
+                <p class="mb-0">&copy; 2025 QuizMaster. All rights reserved.  Developed by <a href="http://github.com/b-aser">b-aser</a></p>
             </div>
         </div>
     </footer>
