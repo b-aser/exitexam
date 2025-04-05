@@ -1,0 +1,67 @@
+{
+    "quizTitle": "World Capitals Quiz",
+    "quizDescription": "Test your knowledge of world geography with these capital city questions",
+    "totalQuestions": 5,
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the capital of France?",
+        "options": [
+          "Berlin",
+          "Madrid",
+          "Paris",
+          "Rome"
+        ],
+        "answer": "Paris",
+        "explanation": "Paris has been the capital of France since the 5th century and is known as the 'City of Light'."
+      },
+      {
+        "id": 2,
+        "question": "Which city is the capital of Japan?",
+        "options": [
+          "Beijing",
+          "Seoul",
+          "Tokyo",
+          "Osaka"
+        ],
+        "answer": "Tokyo",
+        "explanation": "Tokyo became Japan's capital in 1868, replacing Kyoto. It's one of the world's most populous metropolitan areas."
+      },
+      {
+        "id": 3,
+        "question": "The capital of Australia is:",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Canberra",
+          "Brisbane"
+        ],
+        "answer": "Canberra",
+        "explanation": "Canberra was purpose-built as Australia's capital in 1908 as a compromise between rivals Sydney and Melbourne."
+      },
+      {
+        "id": 4,
+        "question": "What is the capital of Canada?",
+        "options": [
+          "Toronto",
+          "Vancouver",
+          "Montreal",
+          "Ottawa"
+        ],
+        "answer": "Ottawa",
+        "explanation": "Ottawa was chosen as Canada's capital by Queen Victoria in 1857 due to its defensible location."
+      },
+      {
+        "id": 5,
+        "question": "Which of these is the capital of Brazil?",
+        "options": [
+          "Rio de Janeiro",
+          "São Paulo",
+          "Brasília",
+          "Salvador"
+        ],
+        "answer": "Brasília",
+        "explanation": "Brasília became Brazil's capital in 1960, replacing Rio de Janeiro. It's a planned city known for its modernist architecture."
+      }
+    ]
+  }
